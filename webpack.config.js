@@ -38,6 +38,16 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader'
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          'file-loader?name=images/[name].[ext]?[hash]',
+          {
+            loader: 'image-webpack-loader',
+            options: {} // Because of this issue https://github.com/tcoopman/image-webpack-loader/issues/88
+          }
+        ]
       }
     ]
   },

@@ -3,6 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-    <h1>Hello, world!</h1>,
-    document.getElementById('root')
+  <div>
+    <h1>Hello, world!</h1>
+    <img src={require('./images/military-alphabet.png')} />
+  </div>,
+  document.getElementById('root')
 );
