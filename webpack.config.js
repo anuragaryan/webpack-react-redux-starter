@@ -23,6 +23,11 @@ module.exports = {
           use: ['css-loader', 'sass-loader'],
           publicPath: '/dist'
         })
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
       }
     ]
   },
@@ -33,7 +38,7 @@ module.exports = {
         collapseWhitespace: true
       },
       hash: true,
-      template: './src/index.ejs'
+      template: './src/index.html'
     }),
     new ExtractTextPlugin('app.css')
   ]
