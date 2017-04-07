@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
+const bootstrapEntryPoints = require('./webpack.bootstrap.config');
 
 const isProd = process.env.NODE_ENV === 'production';
 const cssDev = ['style-loader', 'css-loader', 'sass-loader'];
@@ -12,10 +13,13 @@ const cssProd = ExtractTextPlugin.extract({
 })
 const cssConfig = isProd ? cssProd : cssDev;
 
+const bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
+
 
 module.exports = {
   entry: {
-    app: './src/app.js'
+    app: './src/app.js',
+    bootstrap: bootstrapConfig
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -48,7 +52,10 @@ module.exports = {
             options: {} // Because of this issue https://github.com/tcoopman/image-webpack-loader/issues/88
           }
         ]
-      }
+      },
+      { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000&name=fonts/[name].[ext]' },
+      { test: /\.(ttf|eot)$/, loader: 'file-loader?name=fonts/[name].[ext]' },
+      { test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/, loader: 'imports-loader?jQuery=jquery' }
     ]
   },
   plugins: [
@@ -61,7 +68,7 @@ module.exports = {
       template: './src/index.html'
     }),
     new ExtractTextPlugin({
-      filename: 'app.css',
+      filename: 'css/[name].css',
       disable: !isProd,
       allChunks: true
     }),
