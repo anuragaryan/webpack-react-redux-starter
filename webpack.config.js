@@ -18,7 +18,7 @@ const bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoint
 
 module.exports = {
   entry: {
-    app: './src/app.js',
+    app: './src/index.js',
     bootstrap: bootstrapConfig
   },
   output: {
@@ -65,7 +65,7 @@ module.exports = {
         collapseWhitespace: true
       },
       hash: true,
-      template: './src/index.html'
+      template: './index.html'
     }),
     new ExtractTextPlugin({
       filename: 'css/[name].css',
