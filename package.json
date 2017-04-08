@@ -1,7 +1,7 @@
 {
-  "name": "webpack-starter",
+  "name": "webpack-react-redux-starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Boilerplate for React-Redux",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,8 +9,9 @@
     "prod": "npm run clean && NODE_ENV=production webpack -p",
     "clean": "rimraf ./dist/*"
   },
-  "author": "Anurag Aryan",
-  "license": "ISC",
+  "author": "Anurag Aryan (http://anuragaryan.com/)",
+  "repository": "git@github.com:anuragaryan/webpack-react-redux-starter.git",
+  "license": "MIT",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.24.0",
