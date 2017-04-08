@@ -17,7 +17,7 @@ npm install
 
 It comes with developement and production mode.
 
-For Developement use: `npm run dev`
+For Developement use: `npm run dev`  
 For Production use: `npm run prod`
 
 
